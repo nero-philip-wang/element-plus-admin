@@ -1,13 +1,13 @@
 <template>
-    <div>
-        budApply
-    </div>
+  <div>
+    budApply
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 export default defineComponent({
-    name: 'BudApply'
+  name: 'BudApply'
 })
 </script>
 

@@ -1,12 +1,12 @@
 import theme from '/@/config/theme'
 import { ITheme } from '/@/type/config/theme'
 import { useLayoutStore } from '/@/store/modules/layout'
-export default function(num:number):HTMLStyleElement {
-    const themeStyle:ITheme = num >= theme.length ? theme[0] : theme[num]
-    const { color } = useLayoutStore().getSetting
-    const themeDom = document.createElement('style')
-    themeDom.className = 'layout-side-setting'
-    themeDom.innerText = `
+export default function(num: number): HTMLStyleElement {
+  const themeStyle: ITheme = num >= theme.length ? theme[0] : theme[num]
+  const { color } = useLayoutStore().getSetting
+  const themeDom = document.createElement('style')
+  themeDom.className = 'layout-side-setting'
+  themeDom.innerText = `
     :root {
         --color-primary: ${color.primary};
     }
@@ -48,13 +48,18 @@ export default function(num:number):HTMLStyleElement {
         color: ${themeStyle.sidebarActiveColor};
         border-right: 3px solid ${themeStyle.sidebarActiveBorderRightBG};
     }
-${themeStyle.navbarBg ? `
+${
+  themeStyle.navbarBg
+    ? `
     .layout-main-navbar {
         background-color: ${themeStyle.navbarBg};
     }
-    ` : ''
+    `
+    : ''
 }
-${themeStyle.navbarColor ? `
+${
+  themeStyle.navbarColor
+    ? `
     .layout-main-navbar {
         color: ${themeStyle.navbarColor};
     }
@@ -65,19 +70,26 @@ ${themeStyle.navbarColor ? `
     .layout-main-navbar .el-dropdown {
         color: ${themeStyle.navbarColor};
     }
-    ` : ''
+    `
+    : ''
 }
-${themeStyle.tagsBg ? `
+${
+  themeStyle.tagsBg
+    ? `
     .layout-main-tags {
         background-color: ${themeStyle.tagsBg};
     }
-    ` : ''
+    `
+    : ''
 }
-${themeStyle.tagsColor ? `
+${
+  themeStyle.tagsColor
+    ? `
     .layout-main-tags {
         color: ${themeStyle.tagsColor};
     }
-    ` : ''
+    `
+    : ''
 }
     .layout-main-content {
         background-color: ${themeStyle.mainBg};
@@ -90,9 +102,11 @@ ${themeStyle.tagsColor ? `
         background-color: ${themeStyle.sidebarActiveBg};
         color: ${themeStyle.sidebarColor};
     }
-    `.replace(/\n/g, '').replace(/ {4}/g, '')
-    const prevTheme = document.querySelector('style.layout-side-setting')
-    prevTheme && prevTheme.remove()
-    document.head.appendChild(themeDom)
-    return themeDom
+    `
+    .replace(/\n/g, '')
+    .replace(/ {4}/g, '')
+  const prevTheme = document.querySelector('style.layout-side-setting')
+  prevTheme && prevTheme.remove()
+  document.head.appendChild(themeDom)
+  return themeDom
 }

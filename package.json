@@ -1,18 +1,19 @@
 {
-  "author": "hsianglee",
+  "author": "nero.wang",
   "name": "element-plus-admin",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vuedx-typecheck . && vite build",
     "preview": "vite preview",
     "test": "jest ./test",
-    "eslint": "npx eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "eslint": "npx eslint . --ext .js,.jsx,.ts,.tsx,.vue --fix",
     "stylelint": "npx stylelint **/*.{css,vue} --fix"
   },
   "dependencies": {
     "echarts": "^5.0.2",
-    "element-plus": "^1.0.2-beta.41",
+    "element-plus": "^1.0.2-beta.52",
+    "prettier": "^2.3.2",
     "vue": "^3.0.11"
   },
   "license": "MIT",
