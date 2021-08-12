@@ -11,12 +11,14 @@ import 'element-plus/lib/theme-chalk/index.css'
 import 'element-plus/lib/theme-chalk/display.css'
 import 'nprogress/nprogress.css'
 import '/@/assets/css/index.css'
+import '/@/assets/css/override.css'
+
 import 'virtual:svg-icons-register'
 import SvgIcon from '/@/components/SvnIcon/index.vue'
 
 const app = createApp(App)
 direct(app)
-app.use(ElementPlus, { locale })
+app.use(ElementPlus, { locale, size: 'mini' })
 app.use(router)
 app.use(pinia)
 app.component('SvgIcon', SvgIcon)

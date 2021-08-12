@@ -30,12 +30,12 @@ export const useLayoutStore = defineStore({
       cachedViews: []
     },
     setting: {
-      theme: setting.theme !== undefined ? setting.theme : 0,
+      theme: setting.theme !== undefined ? setting.theme : 2,
       showTags: setting.showTags !== undefined ? setting.showTags : true,
       color: {
         primary: setting.color !== undefined ? setting.color.primary : '#409eff'
       },
-      usePinyinSearch: setting.usePinyinSearch !== undefined ? setting.usePinyinSearch : false
+      usePinyinSearch: setting.usePinyinSearch !== undefined ? setting.usePinyinSearch : true
     },
     status: {
       isLoading: false,

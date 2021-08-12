@@ -32,9 +32,9 @@
         <layout-content />
       </div>
     </div>
-    <div class="layout-sidebar-sidesetting fixed right-0 top-64 z-10">
+    <!-- <div class="layout-sidebar-sidesetting fixed right-0 top-64 z-10">
       <layout-side-setting />
-    </div>
+    </div> -->
   </div>
 </template>
 

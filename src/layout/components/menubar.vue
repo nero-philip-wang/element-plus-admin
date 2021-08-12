@@ -12,19 +12,20 @@
       }"
       :default-active="rootActiveMenu"
       text-color="#fff"
-      @select="(idx) => (selectroot = idx)"
+      @select="rootSelected"
     >
       <menubar-item v-for="v in rootMenus" :key="v.path" :index="v.path" :menu-list="v" />
     </el-menu>
     <el-scrollbar class="whitelize" wrap-class="scrollbar-wrapper">
       <el-menu
+        ref="rightmenu"
         :class="{
           'el-menu-vertical-demo': true,
           'w-44': menubar.status === 0 || menubar.status === 2,
           'w-0': menubar.status === 3,
           'w-16': menubar.status === 1,
         }"
-        :collapse="menubar.status === 1 || menubar.status === 3"
+        :collapse="menubar.status === 1"
         :collapse-transition="false"
         :default-active="activeMenu"
         :default-openeds="allOpenedIndex"
@@ -127,8 +128,20 @@ export default defineComponent({
       onOpenChange,
     }
   },
+  watch: {
+    'menubar.status'(v) {
+      if (v == 2 || v == 0) {
+        this.allOpenedIndex = [...this.allOpenedIndex]
+      }
+    },
+  },
   mounted() {
     this.selectroot = this.rootActiveMenu
+  },
+  methods: {
+    rootSelected(idx: string) {
+      this.selectroot = idx
+    },
   },
 })
 </script>
