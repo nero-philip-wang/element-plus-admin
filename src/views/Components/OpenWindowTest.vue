@@ -4,7 +4,7 @@
       打开窗体
     </el-button>
     <open-window v-model:show="show" :is-show="show" title="选择页">
-      <p style="height: 1500px;">
+      <p style="height: 1500px">
         aaa
       </p>
       <template #btn>
@@ -13,6 +13,11 @@
         <el-button>默认按钮</el-button>
       </template>
     </open-window>
+    <div v-draggable>
+      <el-dialog v-model="show" title="选择页">
+        569 444
+      </el-dialog>
+    </div>
   </div>
 </template>
 
@@ -22,14 +27,14 @@ import OpenWindow from '/@/components/OpenWindow/index.vue'
 export default defineComponent({
   name: 'OpenWindowTest',
   components: {
-    OpenWindow
+    OpenWindow,
   },
   setup() {
-    const show = ref(false)
+    const show = ref(true)
 
     return {
-      show
+      show,
     }
-  }
+  },
 })
 </script>

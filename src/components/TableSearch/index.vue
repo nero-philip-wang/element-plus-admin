@@ -3,7 +3,7 @@
     <div ref="searchEl" class="table-search-form">
       <slot name="search" />
     </div>
-        
+
     <div class="flex justify-between items-center mb-2">
       <div>
         <el-button-group>
@@ -14,7 +14,7 @@
       </div>
       <el-button type="text" @click="toggleSearch">
         高级搜索
-        <i :class="{&quot;el-icon-arrow-down&quot;: !isShow, &quot;el-icon-arrow-up&quot;: isShow}" />
+        <i :class="{ 'el-icon-arrow-down': !isShow, 'el-icon-arrow-up': isShow }" />
       </el-button>
     </div>
     <slot />
@@ -38,21 +38,21 @@ export default defineComponent({
   props: {
     currentPage: {
       type: Number,
-      default: 1
+      default: 1,
     },
     pageSize: {
       type: Number,
-      default: 10
+      default: 10,
     },
     total: {
       type: Number,
-      default: 0
-    }
+      default: 0,
+    },
   },
   emits: ['size-change', 'current-change'],
   setup(props, context: SetupContext) {
     const isShow = ref(false)
-    const handleSizeChange = (v:any) => context.emit('size-change', v)
+    const handleSizeChange = (v: any) => context.emit('size-change', v)
     const handleCurrentChange = (v: any) => context.emit('current-change', v)
     const toggleSearch = () => {
       isShow.value = !isShow.value
@@ -64,16 +64,15 @@ export default defineComponent({
       handleSizeChange,
       handleCurrentChange,
       searchEl,
-      toggleSearch
+      toggleSearch,
     }
-  }
-        
+  },
 })
 </script>
 
 <style lang="postcss" scoped>
 .table-search-form {
-    overflow: hidden;
-    height: 0;
+  overflow: hidden;
+  height: 0;
 }
 </style>

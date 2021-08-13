@@ -2,15 +2,15 @@
   <div>
     <h3>当前用户: {{ username }}</h3>
     <h3 class="mb-2">
-      切换用户: 
+      切换用户:
       <el-radio-group v-model="username" @change="changeUser">
         <el-radio-button label="admin" />
         <el-radio-button label="dev" />
         <el-radio-button label="test" />
       </el-radio-group>
     </h3>
-        
-    <el-row v-action="&quot;add&quot;" class="mb-1">
+
+    <el-row v-action="'add'" class="mb-1">
       <el-button type="primary">
         添加权限
       </el-button>
@@ -18,7 +18,7 @@
         v-action='"add"'
       </el-tag>
     </el-row>
-    <el-row v-if="checkPermission(&quot;add&quot;)" class="mb-1">
+    <el-row v-if="checkPermission('add')" class="mb-1">
       <el-button type="primary">
         添加权限
       </el-button>
@@ -26,7 +26,7 @@
         v-if='checkPermission("add")'
       </el-tag>
     </el-row>
-    <el-row v-action="&quot;update&quot;" class="mb-1">
+    <el-row v-action="'update'" class="mb-1">
       <el-button type="primary">
         修改权限
       </el-button>
@@ -34,7 +34,7 @@
         v-action='"update"'
       </el-tag>
     </el-row>
-    <el-row v-action="&quot;remove&quot;" class="mb-1">
+    <el-row v-action="'remove'" class="mb-1">
       <el-button type="primary">
         删除权限
       </el-button>
@@ -42,8 +42,8 @@
         v-action='"remove"'
       </el-tag>
     </el-row>
-        
-    <el-row v-action="[&quot;add&quot;, &quot;update&quot;, &quot;remove&quot;]" class="mb-1">
+
+    <el-row v-action="['add', 'update', 'remove']" class="mb-1">
       <el-button type="primary">
         添加，编辑，删除权限（或者关系，满足一个就可以显示）
       </el-button>
@@ -51,7 +51,7 @@
         v-action='["add", "update", "remove"]'
       </el-tag>
     </el-row>
-    <el-row v-action:and="[&quot;add&quot;, &quot;update&quot;, &quot;remove&quot;]" class="mb-1">
+    <el-row v-action:and="['add', 'update', 'remove']" class="mb-1">
       <el-button type="primary">
         添加，编辑，删除权限（并且关系，全部满足才能显示）
       </el-button>
@@ -79,9 +79,8 @@ export default defineComponent({
     return {
       changeUser,
       username,
-      checkPermission
+      checkPermission,
     }
-  }
+  },
 })
 </script>
-

@@ -1,11 +1,11 @@
 <template>
-  <div v-if="type===&quot;default&quot;">
-    <div v-for="(val,index) in data" :key="index" class="py-2 border-b hover:bg-gray-100">
+  <div v-if="type === 'default'">
+    <div v-for="(val, index) in data" :key="index" class="py-2 border-b hover:bg-gray-100">
       <div class="flex justify-between items-center">
         <div class="flex items-center">
           <div v-if="val.imgUrl || val.iconClass" class="mr-4">
             <el-avatar v-if="val.imgUrl" size="large" :src="val.imgUrl" />
-            <i v-if="val.iconClass" :class="{&quot;text-3xl&quot;: true, [val.iconClass]: true}" />
+            <i v-if="val.iconClass" :class="{ 'text-3xl': true, [val.iconClass]: true }" />
           </div>
           <div>
             <el-link v-if="val.href" :href="val.href" type="primary" :underline="false">
@@ -32,19 +32,17 @@
     </div>
   </div>
 
-  <div v-if="type===&quot;card&quot;" class="component-list-card">
+  <div v-if="type === 'card'" class="component-list-card">
     <el-card class="mb-2" shadow="never">
       <template #header>
         <slot name="header" />
       </template>
       <el-row>
-        <el-col v-for="(val,index) in data" :key="index" class="c-list-card-body h-40 text-sm text-gray-400" :md="8" :sm="12"
-                :xs="24"
-        >
+        <el-col v-for="(val, index) in data" :key="index" class="c-list-card-body h-40 text-sm text-gray-400" :md="8" :sm="12" :xs="24">
           <div v-if="val.title" class="flex items-center py-1 text-black font-medium">
             <div>
               <el-avatar v-if="val.imgUrl" size="small" :src="val.imgUrl" />
-              <i v-if="val.iconClass" :class="{&quot;text-3xl&quot;: true, [val.iconClass]: true}" />
+              <i v-if="val.iconClass" :class="{ 'text-3xl': true, [val.iconClass]: true }" />
             </div>
             <div class="px-4 truncate text-base">
               {{ val.title }}
@@ -78,9 +76,9 @@ export interface IList {
   iconClass?: string
   title?: string
   subTitle?: string
-  href?:string
-  tag?:string
-  time?:string
+  href?: string
+  tag?: string
+  time?: string
 }
 
 export type IListType = 'default' | 'card'
@@ -90,37 +88,37 @@ export default defineComponent({
   props: {
     data: {
       type: Array as PropType<Array<IList>>,
-      default: () => []
+      default: () => [],
     },
     type: {
       type: String as PropType<IListType>,
-      default: 'default'
-    }
+      default: 'default',
+    },
   },
   setup() {
     return {}
-  }
+  },
 })
 </script>
 
-<style lang='postcss' scoped>
-    ::v-deep(.el-card__header) {
-        margin-bottom: -1px;
-    }
+<style lang="postcss" scoped>
+::v-deep(.el-card__header) {
+  margin-bottom: -1px;
+}
 
-    ::v-deep(.el-card__body) {
-        padding: 0;
-    }
+::v-deep(.el-card__body) {
+  padding: 0;
+}
 
-    .c-list-card-body {
-        transition: all 0.3s;
-        position: relative;
-        padding: 15px;
-        box-shadow: 1px 0 0 0 #f0f0f0, 0 1px 0 0 #f0f0f0, 1px 1px 0 0 #f0f0f0, inset 1px 0 0 0 #f0f0f0, inset 0 1px 0 0 #f0f0f0;
-    }
+.c-list-card-body {
+  transition: all 0.3s;
+  position: relative;
+  padding: 15px;
+  box-shadow: 1px 0 0 0 #f0f0f0, 0 1px 0 0 #f0f0f0, 1px 1px 0 0 #f0f0f0, inset 1px 0 0 0 #f0f0f0, inset 0 1px 0 0 #f0f0f0;
+}
 
-    .c-list-card-body:hover {
-        z-index: 1;
-        box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
-    }
+.c-list-card-body:hover {
+  z-index: 1;
+  box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+}
 </style>
