@@ -15,10 +15,13 @@ import '/@/assets/css/override.css'
 import 'virtual:svg-icons-register'
 import SvgIcon from '/@/components/SvnIcon/index.vue'
 
+import basicUi from '/@/components/QxBasic'
+
 const app = createApp(App)
 direct(app)
 app.use(ElementPlus, { size: 'mini' })
 app.use(router)
 app.use(pinia)
+app.use(basicUi)
 app.component('SvgIcon', SvgIcon)
 app.mount('#app')
