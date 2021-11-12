@@ -11,6 +11,27 @@ const Components: IObject<() => Promise<typeof import('*.vue')>> = Object.assign
 // 静态路由页面
 export const allowRouter: Array<IMenubarList> = [
   {
+    name: 'Dashboard',
+    path: '/',
+    component: Components['Layout'],
+    redirect: '/Dashboard/Workplace',
+    meta: { title: '仪表盘', icon: 'el-icon-eleme' },
+    children: [
+      {
+        name: 'Workplace',
+        path: '/Dashboard/Workplace',
+        component: Components['Workplace'],
+        meta: { title: '工作台', icon: 'el-icon-s-tools' },
+      },
+      // {
+      //   name: 'Welcome',
+      //   path: '/Dashboard/Welcome',
+      //   component: Components['Welcome'],
+      //   meta: { title: '欢迎页', icon: 'el-icon-s-tools' },
+      // },
+    ],
+  },
+  {
     name: 'ErrorPage',
     path: '/ErrorPage',
     meta: { title: '错误页面', icon: 'el-icon-eleme' },
