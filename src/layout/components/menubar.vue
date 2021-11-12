@@ -51,11 +51,11 @@ const filterMenubar = (menuList: IMenubarList[]) => {
     menuList
       .filter((v) => !v.meta.hidden)
       .forEach((v) => {
-        let child = v.children && v.children.filter((v) => !v.meta.hidden)
+        // let child = v.children && v.children.filter((v) => !v.meta.hidden)
         let currentItem = v
-        if (!v.meta.alwaysShow && child && child.length === 1) {
-          [currentItem] = child
-        }
+        // if (!v.meta.alwaysShow && child && child.length === 1) {
+        //   [currentItem] = child
+        // }
         arr.push(currentItem)
         if (currentItem.children && currentItem.children.length > 0) {
           arr[arr.length - 1].children = f(currentItem.children)
@@ -77,6 +77,7 @@ export default defineComponent({
     const { getMenubar, setRoutes, changeCollapsed } = useLayoutStore()
 
     const filterMenubarData = filterMenubar(getMenubar.menuList)
+
     setRoutes(filterMenubarData)
 
     const activeMenu = computed(() => {
@@ -87,7 +88,9 @@ export default defineComponent({
     const rootActiveMenu = computed(() => {
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
       selectroot.value = null
-      return activeMenu.value && `/${(activeMenu.value as any as string).split('/')[1]}`
+      let result = activeMenu.value && `/${(activeMenu.value as any as string).split('/')[1]}`
+      let any = filterMenubarData.filter((c) => c.path == result).length > 0
+      return any ? result : '/'
     })
     const onOpenChange = (d: any) => {
       router.push({ path: d })
